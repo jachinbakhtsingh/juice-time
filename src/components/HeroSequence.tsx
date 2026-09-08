@@ -226,7 +226,7 @@ export function HeroSequence({
       className="relative w-full h-[250vh] select-none"
     >
       {/* Sticky Fullscreen Viewport */}
-      <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col justify-between">
+      <div className="sticky top-0 h-screen h-[100dvh] min-h-[560px] w-full overflow-hidden flex flex-col justify-between">
         
         {/* Background Parallax Canvas Sequence */}
         <div className="absolute inset-0 z-0 bg-neutral-950">
@@ -239,43 +239,43 @@ export function HeroSequence({
 
           {/* Cinematic Vignette & Ambient Color Gradients */}
           <div
-            className="pointer-events-none absolute inset-0 bg-radial from-transparent via-neutral-950/40 to-neutral-950/90"
+            className="pointer-events-none absolute inset-0"
             style={{
-              background: `radial-gradient(circle at 50% 50%, transparent 40%, rgba(5,5,5,0.7) 85%, #050505 100%)`,
+              background: `radial-gradient(circle at 50% 50%, transparent 35%, rgba(5,5,5,0.65) 80%, #050505 100%)`,
             }}
           />
 
           {/* Dynamic Flavor Accent Glow behind can */}
           <div
-            className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[35vw] h-[35vw] max-w-[500px] max-h-[500px] rounded-full blur-[140px] opacity-25 transition-all duration-700"
+            className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] sm:w-[45vw] lg:w-[35vw] h-[60vw] sm:h-[45vw] lg:h-[35vw] max-w-[500px] max-h-[500px] rounded-full blur-[100px] sm:blur-[140px] opacity-25 transition-all duration-700"
             style={{ backgroundColor: currentVariant.themeColor }}
           />
         </div>
 
         {/* Top Spacer for sticky navbar */}
-        <div className="h-24 pointer-events-none" />
+        <div className="h-16 sm:h-20 lg:h-24 pointer-events-none shrink-0" />
 
         {/* Main Hero Grid Content */}
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 flex-1 flex items-center justify-between">
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 flex-1 flex flex-col md:flex-row md:items-center justify-between gap-4 py-2">
           
           {/* OVERLAY TEXT BLOCK (Left Side) */}
-          <div className="w-full max-w-lg lg:max-w-xl flex flex-col items-start z-20">
+          <div className="w-full max-w-md sm:max-w-lg lg:max-w-xl flex flex-col items-start z-20">
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentVariant.id + currentVariant.name}
-                initial={{ opacity: 0, y: 25 }}
+                initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+                exit={{ opacity: 0, y: -15 }}
+                transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                 className="flex flex-col items-start"
               >
                 {/* Brand Category Tag */}
-                <div className="inline-flex items-center gap-2 mb-3">
+                <div className="inline-flex items-center gap-2 mb-2 sm:mb-3">
                   <span
-                    className="w-2 h-2 rounded-full"
+                    className="w-2 h-2 rounded-full shrink-0"
                     style={{ backgroundColor: currentVariant.themeColor }}
                   />
-                  <span className="text-xs uppercase tracking-[0.25em] font-semibold text-neutral-300">
+                  <span className="text-[10px] sm:text-xs uppercase tracking-[0.2em] sm:tracking-[0.25em] font-semibold text-neutral-300">
                     Microbiome Functional Soda
                   </span>
                 </div>
@@ -283,7 +283,7 @@ export function HeroSequence({
                 {/* Large Bold Uppercase Drink Name */}
                 <h1
                   id="hero-drink-name"
-                  className="text-6xl sm:text-7xl lg:text-8xl font-black uppercase tracking-tighter text-white font-['Syne'] leading-[0.9] mb-2 drop-shadow-2xl"
+                  className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black uppercase tracking-tighter text-white font-['Syne'] leading-[0.95] mb-1.5 sm:mb-2 drop-shadow-2xl break-words"
                   style={{ letterSpacing: '-0.04em' }}
                 >
                   {currentVariant.name}
@@ -292,7 +292,7 @@ export function HeroSequence({
                 {/* Smaller Subtitle Line, Light Font Weight */}
                 <h2
                   id="hero-drink-subtitle"
-                  className="text-xl sm:text-2xl lg:text-3xl font-light tracking-[0.2em] uppercase text-neutral-300 mb-6 font-['Plus_Jakarta_Sans']"
+                  className="text-sm sm:text-xl md:text-2xl lg:text-3xl font-light tracking-[0.15em] sm:tracking-[0.2em] uppercase text-neutral-300 mb-3 sm:mb-6 font-['Plus_Jakarta_Sans']"
                 >
                   {currentVariant.subtitle}
                 </h2>
@@ -300,7 +300,7 @@ export function HeroSequence({
                 {/* Short Descriptive Paragraph */}
                 <p
                   id="hero-drink-description"
-                  className="text-sm sm:text-base text-neutral-300 leading-relaxed font-normal mb-8 max-w-md backdrop-blur-xs drop-shadow-md"
+                  className="text-xs sm:text-sm md:text-base text-neutral-300/90 leading-relaxed font-normal mb-5 sm:mb-8 max-w-md backdrop-blur-xs drop-shadow-md line-clamp-3 sm:line-clamp-none"
                 >
                   {currentVariant.description}
                 </p>
@@ -311,7 +311,7 @@ export function HeroSequence({
                   <button
                     id="hero-add-to-btn"
                     onClick={() => onAddToCart(currentVariant)}
-                    className="px-7 py-3.5 rounded-full border border-white/80 text-white font-bold text-xs uppercase tracking-[0.18em] transition-all duration-200 hover:bg-white/10 hover:border-white active:scale-95 flex items-center gap-2"
+                    className="min-h-[44px] px-6 sm:px-7 py-2.5 sm:py-3.5 rounded-full border border-white/80 text-white font-bold text-[11px] sm:text-xs uppercase tracking-[0.18em] transition-all duration-200 hover:bg-white/10 hover:border-white active:scale-95 flex items-center gap-2"
                   >
                     <span>ADD TO</span>
                   </button>
@@ -320,7 +320,7 @@ export function HeroSequence({
                   <button
                     id="hero-cart-btn"
                     onClick={() => onAddToCart(currentVariant)}
-                    className="px-8 py-3.5 rounded-full bg-white text-black font-bold text-xs uppercase tracking-[0.18em] transition-all duration-200 hover:bg-neutral-200 active:scale-95 shadow-xl flex items-center gap-2"
+                    className="min-h-[44px] px-7 sm:px-8 py-2.5 sm:py-3.5 rounded-full bg-white text-black font-bold text-[11px] sm:text-xs uppercase tracking-[0.18em] transition-all duration-200 hover:bg-neutral-200 active:scale-95 shadow-xl flex items-center gap-2"
                     style={{
                       boxShadow: `0 8px 24px -4px ${currentVariant.themeColor}55`,
                     }}
@@ -334,30 +334,30 @@ export function HeroSequence({
                 </div>
 
                 {/* Quick Flavor Nutrition Badges */}
-                <div className="mt-8 flex items-center gap-4 text-[11px] font-mono tracking-wider uppercase text-neutral-400">
-                  <span className="flex items-center gap-1.5">
-                    <strong className="text-white">{currentVariant.calories}</strong> CALS
+                <div className="mt-4 sm:mt-8 flex items-center gap-2.5 sm:gap-4 text-[10px] sm:text-[11px] font-mono tracking-wider uppercase text-neutral-400 flex-wrap">
+                  <span className="flex items-center gap-1">
+                    <strong className="text-white font-bold">{currentVariant.calories}</strong> CALS
                   </span>
                   <span className="text-neutral-600">•</span>
-                  <span className="flex items-center gap-1.5">
-                    <strong className="text-white">{currentVariant.fiber}</strong> PREBIOTIC FIBER
+                  <span className="flex items-center gap-1">
+                    <strong className="text-white font-bold">{currentVariant.fiber}</strong> PREBIOTIC FIBER
                   </span>
                   <span className="text-neutral-600">•</span>
-                  <span className="flex items-center gap-1.5">
-                    <strong className="text-white">{currentVariant.sugars}</strong> TOTAL SUGAR
+                  <span className="flex items-center gap-1">
+                    <strong className="text-white font-bold">{currentVariant.sugars}</strong> TOTAL SUGAR
                   </span>
                 </div>
               </motion.div>
             </AnimatePresence>
           </div>
 
-          {/* CENTER AREA: Kept visually clean and mostly empty to showcase the parallax sequence */}
-          <div className="hidden lg:block flex-1 min-w-[200px] pointer-events-none" />
+          {/* CENTER AREA: Kept visually clean to showcase the parallax sequence */}
+          <div className="hidden lg:block flex-1 min-w-[120px] pointer-events-none" />
 
-          {/* RIGHT SIDE VARIANT NAVIGATION */}
-          <div className="relative z-20 flex items-center gap-5 sm:gap-7 select-none">
+          {/* RIGHT SIDE VARIANT NAVIGATION (Desktop & Mobile Adaptive) */}
+          <div className="relative z-20 flex items-center md:flex-row gap-3 sm:gap-5 md:gap-7 select-none self-end md:self-auto bg-neutral-950/60 md:bg-transparent backdrop-blur-md md:backdrop-blur-none p-2 sm:p-3 md:p-0 rounded-2xl md:rounded-none border border-neutral-800/80 md:border-none">
             
-            {/* Huge Flavor Index Number (01, 02, 03...) */}
+            {/* Flavor Index Number (01, 02, 03...) */}
             <AnimatePresence mode="wait">
               <motion.div
                 key={formattedIndex}
@@ -365,25 +365,25 @@ export function HeroSequence({
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 1.05, y: -10 }}
                 transition={{ duration: 0.35 }}
-                className="text-right"
+                className="text-right flex md:flex-col items-baseline md:items-end gap-1.5 md:gap-0"
               >
                 <span
                   id="flavor-index-display"
-                  className="text-6xl sm:text-7xl lg:text-8xl font-black font-['Syne'] tracking-tighter text-white drop-shadow-2xl select-none"
+                  className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-black font-['Syne'] tracking-tighter text-white drop-shadow-2xl select-none leading-none"
                   style={{
                     WebkitTextStroke: '1px rgba(255,255,255,0.2)',
                   }}
                 >
                   {formattedIndex}
                 </span>
-                <span className="block text-[11px] font-mono uppercase tracking-[0.25em] text-neutral-400 text-right mt-1">
+                <span className="text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.2em] text-neutral-400 text-right mt-0.5 md:mt-1">
                   / {String(totalVariants).padStart(2, '0')}
                 </span>
               </motion.div>
             </AnimatePresence>
 
-            {/* Slim Vertical Navigation Strip */}
-            <div className="flex flex-col items-center py-2 px-1">
+            {/* Navigation Buttons: Slim Vertical Strip on Desktop, Compact on Mobile */}
+            <div className="flex flex-row md:flex-col items-center gap-1 sm:gap-1.5 md:gap-0 md:py-2 md:px-1">
               
               {/* PREV Label & Arrow */}
               <button
@@ -391,20 +391,20 @@ export function HeroSequence({
                 onClick={onPrevVariant}
                 aria-label="Previous drink flavor"
                 disabled={isVariantLoading}
-                className="group flex flex-col items-center gap-1 text-[10px] font-bold tracking-[0.2em] uppercase text-neutral-400 hover:text-white transition-colors duration-200 disabled:opacity-50 py-1"
+                className="min-h-[44px] min-w-[44px] group flex flex-col items-center justify-center gap-0.5 text-[10px] font-bold tracking-[0.15em] sm:tracking-[0.2em] uppercase text-neutral-400 hover:text-white transition-colors duration-200 disabled:opacity-50 px-2 py-1 rounded-lg hover:bg-white/5 active:scale-95"
               >
-                <ChevronUp className="w-4 h-4 transition-transform duration-200 group-hover:-translate-y-1 text-neutral-300" />
-                <span>PREV</span>
+                <ChevronUp className="w-4 h-4 transition-transform duration-200 group-hover:-translate-y-0.5 text-neutral-300" />
+                <span className="hidden sm:inline">PREV</span>
               </button>
 
-              {/* Thin Vertical Divider Line */}
-              <div className="relative my-2 w-[1px] h-12 bg-neutral-700/80 overflow-hidden">
+              {/* Thin Vertical / Horizontal Divider Line */}
+              <div className="relative w-4 h-[1px] md:w-[1px] md:h-12 bg-neutral-700/80 overflow-hidden mx-1 md:my-2">
                 {isVariantLoading ? (
                   <motion.div
-                    className="w-full h-1/2 rounded-full"
+                    className="w-full h-full rounded-full"
                     style={{ backgroundColor: currentVariant.themeColor }}
-                    animate={{ y: [0, 48, 0] }}
-                    transition={{ repeat: Infinity, duration: 0.9, ease: 'easeInOut' }}
+                    animate={{ opacity: [0.3, 1, 0.3] }}
+                    transition={{ repeat: Infinity, duration: 0.8, ease: 'easeInOut' }}
                   />
                 ) : (
                   <div
@@ -420,15 +420,15 @@ export function HeroSequence({
                 onClick={onNextVariant}
                 aria-label="Next drink flavor"
                 disabled={isVariantLoading}
-                className="group flex flex-col items-center gap-1 text-[10px] font-bold tracking-[0.2em] uppercase text-neutral-400 hover:text-white transition-colors duration-200 disabled:opacity-50 py-1"
+                className="min-h-[44px] min-w-[44px] group flex flex-col items-center justify-center gap-0.5 text-[10px] font-bold tracking-[0.15em] sm:tracking-[0.2em] uppercase text-neutral-400 hover:text-white transition-colors duration-200 disabled:opacity-50 px-2 py-1 rounded-lg hover:bg-white/5 active:scale-95"
               >
-                <span>NEXT</span>
-                <ChevronDown className="w-4 h-4 transition-transform duration-200 group-hover:translate-y-1 text-neutral-300" />
+                <span className="hidden sm:inline">NEXT</span>
+                <ChevronDown className="w-4 h-4 transition-transform duration-200 group-hover:translate-y-0.5 text-neutral-300" />
               </button>
 
               {/* Variant Switching Loading Indicator */}
               {isVariantLoading && (
-                <div className="mt-2" title="Preloading sequence frames...">
+                <div className="ml-1 md:ml-0 md:mt-2" title="Preloading sequence frames...">
                   <Loader2
                     className="w-3.5 h-3.5 animate-spin"
                     style={{ color: currentVariant.themeColor }}
@@ -440,28 +440,28 @@ export function HeroSequence({
         </div>
 
         {/* BOTTOM BAR: Scroll indicator on left, minimal monochrome social icons center */}
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-6 flex items-center justify-between">
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 py-3 sm:py-5 flex items-center justify-between text-neutral-400">
           
           {/* Scroll instruction & current frame progress */}
-          <div className="flex items-center gap-3 text-[11px] font-mono tracking-widest uppercase text-neutral-400">
+          <div className="flex items-center gap-2 sm:gap-3 text-[10px] sm:text-[11px] font-mono tracking-widest uppercase">
             <span
-              className="w-1.5 h-1.5 rounded-full animate-ping"
+              className="w-1.5 h-1.5 rounded-full animate-ping shrink-0"
               style={{ backgroundColor: currentVariant.themeColor }}
             />
-            <span className="hidden sm:inline">Scroll to reverse / advance</span>
+            <span className="hidden sm:inline">Scroll to advance / reverse</span>
             <span className="text-neutral-500 font-normal">
               [{currentFrameIndex + 1}/{currentVariant.frameCount}]
             </span>
           </div>
 
           {/* BOTTOM CENTER: Minimal and monochrome row of social icons */}
-          <div className="flex items-center gap-5">
+          <div className="flex items-center gap-4 sm:gap-5">
             <a
               href="https://twitter.com"
               target="_blank"
               rel="noreferrer"
               aria-label="Twitter / X"
-              className="text-neutral-400 hover:text-white transition-colors duration-200"
+              className="min-h-[36px] min-w-[36px] flex items-center justify-center text-neutral-400 hover:text-white transition-colors duration-200"
             >
               <Twitter className="w-4 h-4" />
             </a>
@@ -470,7 +470,7 @@ export function HeroSequence({
               target="_blank"
               rel="noreferrer"
               aria-label="Instagram"
-              className="text-neutral-400 hover:text-white transition-colors duration-200"
+              className="min-h-[36px] min-w-[36px] flex items-center justify-center text-neutral-400 hover:text-white transition-colors duration-200"
             >
               <Instagram className="w-4 h-4" />
             </a>
@@ -479,17 +479,17 @@ export function HeroSequence({
               target="_blank"
               rel="noreferrer"
               aria-label="Facebook"
-              className="text-neutral-400 hover:text-white transition-colors duration-200"
+              className="min-h-[36px] min-w-[36px] flex items-center justify-center text-neutral-400 hover:text-white transition-colors duration-200"
             >
               <Facebook className="w-4 h-4" />
             </a>
           </div>
 
           {/* Current Mode & Accent Indicator */}
-          <div className="hidden sm:flex items-center gap-2 text-[11px] font-mono uppercase text-neutral-500">
-            <span>Palette:</span>
+          <div className="hidden sm:flex items-center gap-2 text-[10px] sm:text-[11px] font-mono uppercase text-neutral-500">
+            <span>Accent:</span>
             <span
-              className="w-3 h-3 rounded-full border border-white/30"
+              className="w-2.5 h-2.5 rounded-full border border-white/30"
               style={{ backgroundColor: currentVariant.themeColor }}
             />
           </div>

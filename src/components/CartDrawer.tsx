@@ -1,4 +1,5 @@
-import { X, Trash2, ShoppingBag, ArrowRight, ShieldCheck } from 'lucide-react';
+import { useState } from 'react';
+import { X, Trash2, ShoppingBag, ArrowRight, ShieldCheck, Check } from 'lucide-react';
 import { CartItem } from '../types';
 
 interface CartDrawerProps {
@@ -18,11 +19,20 @@ export function CartDrawer({
   onRemoveItem,
   isDark,
 }: CartDrawerProps) {
+  const [isCheckingOut, setIsCheckingOut] = useState(false);
+
   if (!isOpen) return null;
 
   const subtotal = items.reduce((acc, item) => acc + item.price * item.quantity, 0);
   const freeShippingThreshold = 50;
   const progressToFreeShipping = Math.min(100, (subtotal / freeShippingThreshold) * 100);
+
+  const handleCheckout = () => {
+    setIsCheckingOut(true);
+    setTimeout(() => {
+      setIsCheckingOut(false);
+    }, 3000);
+  };
 
   return (
     <div className="fixed inset-0 z-[90] flex justify-end">
@@ -39,24 +49,25 @@ export function CartDrawer({
         }`}
       >
         {/* Top Header */}
-        <div className="p-6 border-b border-neutral-800 flex items-center justify-between">
+        <div className="p-4 sm:p-6 border-b border-neutral-800 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <ShoppingBag className="w-5 h-5" />
-            <h3 className="text-xl font-bold font-['Syne'] uppercase">Your Bag</h3>
+            <h3 className="text-lg sm:text-xl font-bold font-['Syne'] uppercase">Your Bag</h3>
             <span className="text-xs font-mono text-neutral-400">
               ({items.reduce((sum, i) => sum + i.quantity, 0)} items)
             </span>
           </div>
           <button
             onClick={onClose}
-            className="p-2 rounded-full hover:bg-neutral-800/60 text-neutral-400 hover:text-white transition-colors"
+            className="p-2 rounded-full hover:bg-neutral-800/60 text-neutral-400 hover:text-white transition-colors min-w-[40px] min-h-[40px] flex items-center justify-center"
+            aria-label="Close bag"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
         {/* Free Shipping Meter */}
-        <div className="px-6 py-3 bg-neutral-900/60 border-b border-neutral-800/60 text-xs">
+        <div className="px-4 sm:px-6 py-2.5 sm:py-3 bg-neutral-900/60 border-b border-neutral-800/60 text-xs">
           <div className="flex justify-between font-medium mb-1.5 text-neutral-300">
             {subtotal >= freeShippingThreshold ? (
               <span className="text-emerald-400 font-bold">You unlocked FREE shipping!</span>
@@ -76,9 +87,9 @@ export function CartDrawer({
         </div>
 
         {/* Items List */}
-        <div className="flex-1 overflow-y-auto p-6 space-y-4">
+        <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-3 sm:space-y-4">
           {items.length === 0 ? (
-            <div className="h-full flex flex-col items-center justify-center text-center text-neutral-400">
+            <div className="h-full flex flex-col items-center justify-center text-center text-neutral-400 py-12">
               <ShoppingBag className="w-12 h-12 stroke-1 text-neutral-600 mb-3" />
               <p className="text-base font-semibold text-white mb-1">Your bag is empty</p>
               <p className="text-xs text-neutral-500 max-w-xs">
@@ -89,40 +100,42 @@ export function CartDrawer({
             items.map((item, index) => (
               <div
                 key={`${item.variantId}-${item.packSize}-${index}`}
-                className="p-4 rounded-2xl bg-neutral-900/50 border border-neutral-800/80 flex items-center justify-between gap-4"
+                className="p-3.5 sm:p-4 rounded-xl sm:rounded-2xl bg-neutral-900/50 border border-neutral-800/80 flex items-center justify-between gap-3"
               >
                 <div className="flex items-center gap-3">
                   <div
-                    className="w-10 h-10 rounded-xl flex items-center justify-center font-bold text-white uppercase text-xs"
+                    className="w-10 h-10 rounded-xl flex items-center justify-center font-bold text-white uppercase text-xs shrink-0"
                     style={{ backgroundColor: item.themeColor }}
                   >
                     🥫
                   </div>
                   <div>
-                    <h4 className="font-bold text-white text-sm uppercase">
+                    <h4 className="font-bold text-white text-xs sm:text-sm uppercase leading-tight">
                       OLIPOP {item.name}
                     </h4>
-                    <p className="text-xs text-neutral-400">{item.packSize}</p>
-                    <span className="text-xs font-mono font-bold text-white mt-1 block">
+                    <p className="text-[11px] sm:text-xs text-neutral-400">{item.packSize}</p>
+                    <span className="text-xs font-mono font-bold text-white mt-0.5 block">
                       ${(item.price * item.quantity).toFixed(2)}
                     </span>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-2 sm:gap-3">
                   <div className="flex items-center border border-neutral-700 rounded-lg overflow-hidden bg-neutral-950">
                     <button
                       onClick={() => onUpdateQuantity(index, item.quantity - 1)}
-                      className="px-2 py-1 text-xs text-neutral-400 hover:text-white"
+                      className="w-8 h-8 flex items-center justify-center text-xs text-neutral-400 hover:text-white"
+                      aria-label="Decrease quantity"
                     >
                       -
                     </button>
-                    <span className="px-2 py-1 text-xs font-mono font-bold text-white">
+                    <span className="w-6 text-center text-xs font-mono font-bold text-white">
                       {item.quantity}
                     </span>
                     <button
                       onClick={() => onUpdateQuantity(index, item.quantity + 1)}
-                      className="px-2 py-1 text-xs text-neutral-400 hover:text-white"
+                      className="w-8 h-8 flex items-center justify-center text-xs text-neutral-400 hover:text-white"
+                      aria-label="Increase quantity"
                     >
                       +
                     </button>
@@ -130,7 +143,8 @@ export function CartDrawer({
 
                   <button
                     onClick={() => onRemoveItem(index)}
-                    className="p-1.5 text-neutral-500 hover:text-rose-400 transition-colors"
+                    className="p-2 text-neutral-500 hover:text-rose-400 transition-colors min-w-[36px] min-h-[36px] flex items-center justify-center"
+                    aria-label="Remove item"
                   >
                     <Trash2 className="w-4 h-4" />
                   </button>
@@ -142,7 +156,7 @@ export function CartDrawer({
 
         {/* Footer Checkout */}
         {items.length > 0 && (
-          <div className="p-6 border-t border-neutral-800 bg-neutral-950 space-y-4">
+          <div className="p-4 sm:p-6 border-t border-neutral-800 bg-neutral-950 space-y-3.5 sm:space-y-4">
             <div className="flex justify-between text-sm">
               <span className="text-neutral-400">Subtotal</span>
               <span className="font-bold text-white font-mono text-base">
@@ -150,16 +164,23 @@ export function CartDrawer({
               </span>
             </div>
 
-            <button
-              onClick={() => alert('Proceeding to checkout with your Olipop bundle!')}
-              className="w-full py-4 rounded-full bg-white text-black font-bold text-xs uppercase tracking-[0.18em] hover:bg-neutral-200 transition-all active:scale-95 shadow-xl flex items-center justify-center gap-2"
-            >
-              <span>CHECKOUT</span>
-              <ArrowRight className="w-4 h-4" />
-            </button>
+            {isCheckingOut ? (
+              <div className="w-full min-h-[48px] py-3.5 rounded-full bg-emerald-500 text-black font-bold text-xs uppercase tracking-[0.18em] flex items-center justify-center gap-2">
+                <Check className="w-4 h-4" />
+                <span>Redirecting to Checkout...</span>
+              </div>
+            ) : (
+              <button
+                onClick={handleCheckout}
+                className="w-full min-h-[48px] py-3.5 sm:py-4 rounded-full bg-white text-black font-bold text-xs uppercase tracking-[0.18em] hover:bg-neutral-200 transition-all active:scale-95 shadow-xl flex items-center justify-center gap-2"
+              >
+                <span>CHECKOUT</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
+            )}
 
-            <div className="flex items-center justify-center gap-2 text-[11px] text-neutral-400">
-              <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
+            <div className="flex items-center justify-center gap-2 text-[10px] sm:text-[11px] text-neutral-400 text-center">
+              <ShieldCheck className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
               <span>Cold-pack insulated • 100% Satisfaction Guarantee</span>
             </div>
           </div>

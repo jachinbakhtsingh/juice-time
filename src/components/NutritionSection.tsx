@@ -10,14 +10,14 @@ export function NutritionSection({ currentVariant, isDark }: NutritionSectionPro
   return (
     <section
       id="nutrition"
-      className={`py-28 px-6 sm:px-8 lg:px-12 border-t transition-colors duration-300 ${
+      className={`py-16 sm:py-24 lg:py-28 px-4 sm:px-8 lg:px-12 border-t transition-colors duration-300 ${
         isDark
           ? 'bg-neutral-950 text-white border-neutral-800'
           : 'bg-neutral-50 text-neutral-900 border-neutral-200'
       }`}
     >
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           
           {/* Left Description */}
           <div className="lg:col-span-6 flex flex-col items-start">
@@ -32,17 +32,17 @@ export function NutritionSection({ currentVariant, isDark }: NutritionSectionPro
             </div>
 
             <h2
-              className="text-4xl sm:text-5xl font-black uppercase tracking-tight font-['Syne'] mb-6"
+              className="text-3xl sm:text-4xl lg:text-5xl font-black uppercase tracking-tight font-['Syne'] mb-4 sm:mb-6"
               style={{ letterSpacing: '-0.03em' }}
             >
               Every Sip Counts
             </h2>
 
-            <p className="text-base text-neutral-400 leading-relaxed mb-8">
+            <p className="text-sm sm:text-base text-neutral-400 leading-relaxed mb-6 sm:mb-8">
               We believe in radical transparency. Unlike traditional soda brands that conceal artificial sweeteners and high fructose syrups, every Olipop nutrition label is a testament to honest, clinically studied plant fiber and real botanicals.
             </p>
 
-            <div className="space-y-4 w-full max-w-md">
+            <div className="space-y-3.5 sm:space-y-4 w-full max-w-md mb-8 lg:mb-0">
               <div
                 className={`p-4 rounded-xl border flex items-start gap-3.5 ${
                   isDark ? 'bg-neutral-900/60 border-neutral-800' : 'bg-white border-neutral-200'
@@ -90,9 +90,9 @@ export function NutritionSection({ currentVariant, isDark }: NutritionSectionPro
           </div>
 
           {/* Right: Authentic FDA Nutrition Facts Label Card */}
-          <div className="lg:col-span-6 flex justify-center">
+          <div className="lg:col-span-6 flex justify-center w-full">
             <div
-              className="w-full max-w-sm bg-white text-black p-6 sm:p-8 rounded-xl shadow-2xl border-4 border-black font-sans select-none"
+              className="w-full max-w-sm bg-white text-black p-5 sm:p-8 rounded-xl shadow-2xl border-4 border-black font-sans select-none"
               style={{
                 boxShadow: `0 20px 40px -10px ${currentVariant.themeColor}33`,
               }}

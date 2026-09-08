@@ -18,7 +18,7 @@ export function FaqSection({ currentVariant, isDark }: FaqSectionProps) {
   return (
     <section
       id="faq"
-      className={`py-28 px-6 sm:px-8 lg:px-12 border-t transition-colors duration-300 ${
+      className={`py-16 sm:py-24 lg:py-28 px-4 sm:px-8 lg:px-12 border-t transition-colors duration-300 ${
         isDark
           ? 'bg-neutral-950 text-white border-neutral-800'
           : 'bg-neutral-50 text-neutral-900 border-neutral-200'
@@ -26,7 +26,7 @@ export function FaqSection({ currentVariant, isDark }: FaqSectionProps) {
     >
       <div className="max-w-4xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-12 sm:mb-16">
           <div className="inline-flex items-center gap-2 mb-3">
             <span
               className="w-2 h-2 rounded-full"
@@ -37,24 +37,24 @@ export function FaqSection({ currentVariant, isDark }: FaqSectionProps) {
             </span>
           </div>
           <h2
-            className="text-4xl sm:text-5xl font-black uppercase tracking-tight font-['Syne'] mb-4"
+            className="text-3xl sm:text-4xl lg:text-5xl font-black uppercase tracking-tight font-['Syne'] mb-3 sm:mb-4"
             style={{ letterSpacing: '-0.03em' }}
           >
             Frequently Asked Questions
           </h2>
-          <p className="text-sm sm:text-base text-neutral-400 max-w-lg mx-auto">
+          <p className="text-xs sm:text-sm md:text-base text-neutral-400 max-w-lg mx-auto">
             Everything you need to know about our functional botanicals, microbiome fiber, storage, and subscription.
           </p>
         </div>
 
         {/* Accordion list */}
-        <div className="space-y-4">
+        <div className="space-y-3 sm:space-y-4">
           {FAQ_DATA.map((item, index) => {
             const isOpen = openIndex === index;
             return (
               <div
                 key={item.question}
-                className={`rounded-2xl border transition-all duration-300 overflow-hidden ${
+                className={`rounded-xl sm:rounded-2xl border transition-all duration-300 overflow-hidden ${
                   isDark
                     ? isOpen
                       ? 'bg-neutral-900/90 border-neutral-700'
@@ -66,17 +66,17 @@ export function FaqSection({ currentVariant, isDark }: FaqSectionProps) {
               >
                 <button
                   onClick={() => toggleAccordion(index)}
-                  className="w-full py-6 px-6 sm:px-8 text-left flex items-center justify-between gap-4 select-none focus:outline-none"
+                  className="w-full min-h-[48px] py-4 sm:py-6 px-4 sm:px-8 text-left flex items-center justify-between gap-4 select-none focus:outline-none"
                   aria-expanded={isOpen}
                 >
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-2.5 sm:gap-3">
                     <span
-                      className="text-xs font-mono uppercase tracking-wider font-semibold"
+                      className="text-xs font-mono uppercase tracking-wider font-semibold shrink-0"
                       style={{ color: currentVariant.themeColor }}
                     >
                       0{index + 1}
                     </span>
-                    <span className="text-base sm:text-lg font-bold text-white font-['Plus_Jakarta_Sans']">
+                    <span className="text-sm sm:text-base md:text-lg font-bold text-white font-['Plus_Jakarta_Sans']">
                       {item.question}
                     </span>
                   </div>
@@ -93,7 +93,7 @@ export function FaqSection({ currentVariant, isDark }: FaqSectionProps) {
                 </button>
 
                 {isOpen && (
-                  <div className="px-6 sm:px-8 pb-6 pt-1 text-sm text-neutral-300 leading-relaxed border-t border-neutral-800/40">
+                  <div className="px-4 sm:px-8 pb-5 sm:pb-6 pt-1 text-xs sm:text-sm text-neutral-300 leading-relaxed border-t border-neutral-800/40">
                     <p>{item.answer}</p>
                   </div>
                 )}

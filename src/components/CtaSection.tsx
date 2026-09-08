@@ -18,22 +18,22 @@ export function CtaSection({ currentVariant, onAddToCart, isDark }: CtaSectionPr
   return (
     <section
       id="cta"
-      className="py-28 px-6 sm:px-8 lg:px-12 bg-black text-white relative overflow-hidden border-t border-neutral-800"
+      className="py-16 sm:py-24 lg:py-28 px-4 sm:px-8 lg:px-12 bg-black text-white relative overflow-hidden border-t border-neutral-800"
     >
       {/* Background subtle radial glow */}
       <div
-        className="pointer-events-none absolute -bottom-24 right-0 w-[500px] h-[500px] rounded-full blur-[160px] opacity-20"
+        className="pointer-events-none absolute -bottom-24 right-0 w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] rounded-full blur-[120px] sm:blur-[160px] opacity-20"
         style={{ backgroundColor: currentVariant.themeColor }}
       />
 
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           
           {/* LEFT: Square CTA Product Packshot (Olipop Grape Soda Can + Glossy Grapes) */}
           <div className="lg:col-span-6 flex justify-center">
             <div
               id="cta-product-packshot"
-              className="relative w-full max-w-[440px] aspect-square rounded-3xl overflow-hidden shadow-2xl border border-purple-500/20 flex flex-col justify-between select-none"
+              className="relative w-full max-w-[340px] sm:max-w-[440px] aspect-square rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border border-purple-500/20 flex flex-col justify-between select-none"
               style={{
                 background: 'linear-gradient(135deg, #7e22ce 0%, #6b21a8 50%, #4c1d95 100%)',
                 boxShadow: '0 25px 60px -15px rgba(126, 34, 206, 0.45)',
@@ -44,25 +44,25 @@ export function CtaSection({ currentVariant, onAddToCart, isDark }: CtaSectionPr
               <div className="absolute -top-12 -left-12 w-48 h-48 rounded-full bg-purple-300/20 blur-3xl pointer-events-none" />
 
               {/* Minimal Top Brand Tag */}
-              <div className="relative z-10 p-6 flex justify-between items-start">
-                <span className="text-[11px] font-black uppercase tracking-[0.25em] px-3 py-1 rounded-full bg-white/15 text-white backdrop-blur-md border border-white/20">
+              <div className="relative z-10 p-3.5 sm:p-6 flex justify-between items-start">
+                <span className="text-[10px] sm:text-[11px] font-black uppercase tracking-[0.2em] sm:tracking-[0.25em] px-2.5 sm:px-3 py-1 rounded-full bg-white/15 text-white backdrop-blur-md border border-white/20">
                   CLASSIC CONCORD
                 </span>
-                <span className="text-xs font-mono font-bold text-white/80">
+                <span className="text-[10px] sm:text-xs font-mono font-bold text-white/80">
                   35 CAL • 9G FIBER
                 </span>
               </div>
 
               {/* CENTER: Upright Grape Soda Can with realistic metallic surface & condensation */}
-              <div className="relative z-10 flex-1 flex items-center justify-center -my-2">
-                <div className="relative w-36 sm:w-44 h-64 sm:h-76 flex flex-col items-center">
+              <div className="relative z-10 flex-1 flex items-center justify-center -my-1 sm:-my-2">
+                <div className="relative w-28 sm:w-36 md:w-44 h-48 sm:h-64 md:h-76 flex flex-col items-center">
                   
                   {/* Soft Floor Shadow */}
-                  <div className="absolute -bottom-4 w-40 h-8 bg-black/60 rounded-full blur-md" />
+                  <div className="absolute -bottom-3 sm:-bottom-4 w-32 sm:w-40 h-6 sm:h-8 bg-black/60 rounded-full blur-md" />
 
                   {/* Can Top Bevel & Rim */}
-                  <div className="w-[88%] h-5 bg-gradient-to-r from-neutral-400 via-neutral-100 to-neutral-500 rounded-t-xl border-t border-white/70 shadow-inner flex items-center justify-center">
-                    <div className="w-[72%] h-2 bg-gradient-to-r from-neutral-600 via-neutral-300 to-neutral-700 rounded-full shadow-inner" />
+                  <div className="w-[88%] h-4 sm:h-5 bg-gradient-to-r from-neutral-400 via-neutral-100 to-neutral-500 rounded-t-xl border-t border-white/70 shadow-inner flex items-center justify-center">
+                    <div className="w-[72%] h-1.5 sm:h-2 bg-gradient-to-r from-neutral-600 via-neutral-300 to-neutral-700 rounded-full shadow-inner" />
                   </div>
 
                   {/* Main Can Cylinder Body */}
@@ -191,13 +191,13 @@ export function CtaSection({ currentVariant, onAddToCart, isDark }: CtaSectionPr
             </div>
 
             <h2
-              className="text-4xl sm:text-5xl lg:text-6xl font-black uppercase tracking-tight font-['Syne'] mb-4"
+              className="text-3xl sm:text-4xl lg:text-5xl font-black uppercase tracking-tight font-['Syne'] mb-4"
               style={{ letterSpacing: '-0.03em' }}
             >
               Order Olipop Today
             </h2>
 
-            <p className="text-base text-neutral-400 leading-relaxed mb-8">
+            <p className="text-sm sm:text-base text-neutral-400 leading-relaxed mb-6 sm:mb-8">
               Swap sugar crashes for gut vitality. Choose your favorite flavor or build a variety bundle delivered straight to your door with cold-pack insulation.
             </p>
 
@@ -206,14 +206,14 @@ export function CtaSection({ currentVariant, onAddToCart, isDark }: CtaSectionPr
               <label className="block text-xs font-bold uppercase tracking-wider text-neutral-400 mb-2">
                 Select Bundle Size:
               </label>
-              <div className="grid grid-cols-3 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-3">
                 {(['12-Pack', '24-Pack', 'Variety 12-Pack'] as const).map((pack) => {
                   const isPackSelected = selectedPack === pack;
                   return (
                     <button
                       key={pack}
                       onClick={() => setSelectedPack(pack)}
-                      className={`py-3 px-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all border text-center ${
+                      className={`min-h-[44px] py-2.5 sm:py-3 px-3 rounded-xl text-xs font-bold uppercase tracking-wider transition-all border text-center flex flex-col items-center justify-center ${
                         isPackSelected
                           ? 'bg-white text-black border-white shadow-md'
                           : 'bg-neutral-900 text-neutral-300 border-neutral-800 hover:border-neutral-700'
@@ -232,7 +232,7 @@ export function CtaSection({ currentVariant, onAddToCart, isDark }: CtaSectionPr
             </div>
 
             {/* Subscribe & Save Toggle */}
-            <div className="w-full p-4 rounded-xl bg-neutral-900 border border-neutral-800 mb-8 flex items-center justify-between">
+            <div className="w-full p-3.5 sm:p-4 rounded-xl bg-neutral-900 border border-neutral-800 mb-6 sm:mb-8 flex items-center justify-between gap-3">
               <div className="flex items-center gap-3">
                 <input
                   type="checkbox"
@@ -242,25 +242,25 @@ export function CtaSection({ currentVariant, onAddToCart, isDark }: CtaSectionPr
                   className="w-4 h-4 rounded text-white bg-neutral-800 border-neutral-700 focus:ring-0 cursor-pointer"
                 />
                 <label htmlFor="sub-toggle" className="cursor-pointer text-sm font-medium">
-                  <span className="font-bold text-white">Subscribe & Save 15%</span>
+                  <span className="font-bold text-white block sm:inline">Subscribe & Save 15%</span>
                   <span className="block text-xs text-neutral-400">Cancel or swap flavors anytime in 1 click</span>
                 </label>
               </div>
-              <span className="text-xs font-bold text-emerald-400 font-mono">
+              <span className="text-xs font-bold text-emerald-400 font-mono shrink-0">
                 15% OFF
               </span>
             </div>
 
             {/* Price & Action Buttons */}
-            <div className="w-full flex flex-col sm:flex-row items-center gap-4">
-              <div className="flex flex-col sm:items-start">
+            <div className="w-full flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+              <div className="flex items-baseline sm:flex-col sm:items-start justify-between sm:justify-start">
                 <span className="text-xs uppercase tracking-wider text-neutral-500 font-bold">Total</span>
                 <div className="flex items-baseline gap-2">
-                  <span className="text-3xl font-black font-['Syne'] text-white">
+                  <span className="text-2xl sm:text-3xl font-black font-['Syne'] text-white">
                     ${finalPrice}
                   </span>
                   {isSubscribe && (
-                    <span className="text-sm line-through text-neutral-500 font-mono">
+                    <span className="text-xs sm:text-sm line-through text-neutral-500 font-mono">
                       ${basePrice.toFixed(2)}
                     </span>
                   )}
@@ -272,7 +272,7 @@ export function CtaSection({ currentVariant, onAddToCart, isDark }: CtaSectionPr
                 <button
                   id="cta-add-to-cart-btn"
                   onClick={() => onAddToCart(currentVariant, selectedPack)}
-                  className="flex-1 py-4 px-6 rounded-full bg-white text-black font-bold text-xs uppercase tracking-[0.18em] transition-all duration-200 hover:bg-neutral-200 active:scale-95 shadow-xl flex items-center justify-center gap-2"
+                  className="min-h-[48px] flex-1 py-3.5 sm:py-4 px-6 rounded-full bg-white text-black font-bold text-xs uppercase tracking-[0.18em] transition-all duration-200 hover:bg-neutral-200 active:scale-95 shadow-xl flex items-center justify-center gap-2"
                 >
                   <ShoppingBag className="w-4 h-4" />
                   <span>ADD TO CART</span>
@@ -281,13 +281,13 @@ export function CtaSection({ currentVariant, onAddToCart, isDark }: CtaSectionPr
             </div>
 
             {/* Guarantees */}
-            <div className="mt-8 flex flex-wrap items-center gap-6 text-xs text-neutral-400 border-t border-neutral-800/80 pt-6">
+            <div className="mt-6 sm:mt-8 flex flex-wrap items-center gap-4 sm:gap-6 text-xs text-neutral-400 border-t border-neutral-800/80 pt-6 w-full">
               <div className="flex items-center gap-2">
-                <Truck className="w-4 h-4 text-neutral-300" />
+                <Truck className="w-4 h-4 text-neutral-300 shrink-0" />
                 <span>Free Carbon-Neutral Shipping</span>
               </div>
               <div className="flex items-center gap-2">
-                <RotateCcw className="w-4 h-4 text-neutral-300" />
+                <RotateCcw className="w-4 h-4 text-neutral-300 shrink-0" />
                 <span>100% Happiness Guarantee</span>
               </div>
             </div>

@@ -68,37 +68,37 @@ export function CustomizeModal({
   return (
     <div
       id="customizer-modal-overlay"
-      className="fixed inset-0 z-[80] flex items-center justify-center p-4 sm:p-6 bg-black/80 backdrop-blur-md overflow-y-auto"
+      className="fixed inset-0 z-[80] flex items-center justify-center p-2 sm:p-6 bg-black/80 backdrop-blur-md overflow-y-auto"
     >
       <div
-        className={`w-full max-w-2xl rounded-3xl border shadow-2xl overflow-hidden my-8 transition-all ${
+        className={`w-full max-w-2xl rounded-2xl sm:rounded-3xl border shadow-2xl overflow-hidden my-4 sm:my-8 transition-all ${
           isDark ? 'bg-neutral-950 text-white border-neutral-800' : 'bg-white text-neutral-900 border-neutral-200'
         }`}
       >
         {/* Header */}
-        <div className="px-6 py-5 border-b border-neutral-800 flex items-center justify-between">
-          <div className="flex items-center gap-2.5">
+        <div className="px-4 sm:px-6 py-4 sm:py-5 border-b border-neutral-800 flex items-center justify-between">
+          <div className="flex items-center gap-2 sm:gap-2.5">
             <div
-              className="w-3 h-3 rounded-full"
+              className="w-3 h-3 rounded-full shrink-0"
               style={{ backgroundColor: current?.themeColor || '#E11D48' }}
             />
-            <h3 className="text-xl font-bold font-['Syne'] tracking-tight">
+            <h3 className="text-base sm:text-xl font-bold font-['Syne'] tracking-tight truncate">
               Brand & Parallax Customizer
             </h3>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
             <button
               onClick={onResetDefaults}
-              className="flex items-center gap-1 text-xs text-neutral-400 hover:text-white px-2.5 py-1.5 rounded-lg border border-neutral-800 hover:border-neutral-700 transition-colors"
+              className="flex items-center gap-1 text-xs text-neutral-400 hover:text-white px-2 sm:px-2.5 py-1.5 rounded-lg border border-neutral-800 hover:border-neutral-700 transition-colors min-h-[36px]"
               title="Reset to initial Olipop specs"
             >
               <RotateCcw className="w-3 h-3" />
-              <span>Reset</span>
+              <span className="hidden sm:inline">Reset</span>
             </button>
             <button
               onClick={onClose}
-              className="p-2 rounded-full hover:bg-neutral-800/60 text-neutral-400 hover:text-white transition-colors"
+              className="p-1.5 sm:p-2 rounded-full hover:bg-neutral-800/60 text-neutral-400 hover:text-white transition-colors min-w-[36px] min-h-[36px] flex items-center justify-center"
               aria-label="Close customizer"
             >
               <X className="w-5 h-5" />
@@ -107,12 +107,12 @@ export function CustomizeModal({
         </div>
 
         {/* Variant Tabs */}
-        <div className="px-6 pt-4 pb-2 border-b border-neutral-800/60 flex items-center gap-2 overflow-x-auto">
+        <div className="px-4 sm:px-6 pt-3 sm:pt-4 pb-2 border-b border-neutral-800/60 flex items-center gap-2 overflow-x-auto">
           {variants.map((v, i) => (
             <button
               key={v.id}
               onClick={() => setSelectedEditIndex(i)}
-              className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all shrink-0 border ${
+              className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all shrink-0 border min-h-[36px] ${
                 selectedEditIndex === i
                   ? 'bg-neutral-800 text-white border-neutral-600'
                   : 'bg-neutral-900/50 text-neutral-400 border-neutral-800/80 hover:text-white'
@@ -125,7 +125,7 @@ export function CustomizeModal({
 
           <button
             onClick={handleAddNew}
-            className="flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider border border-dashed border-neutral-700 hover:border-neutral-500 text-neutral-400 hover:text-white transition-all shrink-0"
+            className="flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider border border-dashed border-neutral-700 hover:border-neutral-500 text-neutral-400 hover:text-white transition-all shrink-0 min-h-[36px]"
           >
             <Plus className="w-3.5 h-3.5" />
             <span>Add Drink</span>
@@ -134,7 +134,7 @@ export function CustomizeModal({
 
         {/* Form Body */}
         {current && (
-          <div className="p-6 space-y-6 max-h-[70vh] overflow-y-auto text-sm">
+          <div className="p-4 sm:p-6 space-y-5 sm:space-y-6 max-h-[72vh] sm:max-h-[70vh] overflow-y-auto text-sm">
             
             {/* Global Theme Mode Toggle */}
             <div className="flex items-center justify-between p-3.5 rounded-xl bg-neutral-900/60 border border-neutral-800">

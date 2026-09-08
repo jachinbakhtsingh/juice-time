@@ -73,24 +73,24 @@ export function Navbar({
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
           ? isDark
-            ? 'bg-neutral-950/85 backdrop-blur-md border-b border-neutral-800/60 shadow-lg shadow-black/20'
-            : 'bg-white/85 backdrop-blur-md border-b border-neutral-200/80 shadow-md shadow-neutral-200/40'
-          : 'bg-gradient-to-b from-black/60 to-transparent'
+            ? 'bg-neutral-950/90 backdrop-blur-md border-b border-neutral-800/60 shadow-lg shadow-black/20'
+            : 'bg-white/90 backdrop-blur-md border-b border-neutral-200/80 shadow-md shadow-neutral-200/40'
+          : 'bg-gradient-to-b from-black/70 to-transparent'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
         {/* Left: Brand Logo & Tagline */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3">
           <a
             href="#"
             onClick={(e) => {
               e.preventDefault();
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
-            className="flex items-center gap-2 group"
+            className="flex items-center gap-2 group min-h-[44px]"
           >
             <span
-              className="text-3xl sm:text-4xl font-black tracking-tighter uppercase font-['Syne'] transition-transform duration-300 group-hover:scale-105"
+              className="text-2xl sm:text-3xl lg:text-4xl font-black tracking-tighter uppercase font-['Syne'] transition-transform duration-300 group-hover:scale-105"
               style={{
                 color: isDark ? '#FFFFFF' : '#111827',
                 letterSpacing: '-0.04em',
@@ -112,7 +112,7 @@ export function Navbar({
         </div>
 
         {/* Right Desktop Nav Links */}
-        <nav className="hidden lg:flex items-center gap-8">
+        <nav className="hidden lg:flex items-center gap-7">
           {NAV_LINKS.map((link) => {
             const isActive = activeSection === link.href.replace('#', '');
             return (
@@ -120,7 +120,7 @@ export function Navbar({
                 key={link.label}
                 href={link.href}
                 onClick={(e) => scrollToSection(e, link.href)}
-                className={`text-sm font-medium tracking-wide transition-all duration-200 relative py-1 ${
+                className={`text-sm font-medium tracking-wide transition-all duration-200 relative py-2 ${
                   isActive
                     ? isDark
                       ? 'text-white font-semibold'
@@ -133,7 +133,7 @@ export function Navbar({
                 {link.label}
                 {isActive && (
                   <span
-                    className="absolute -bottom-1 left-0 right-0 h-[2px] rounded-full transition-all duration-300"
+                    className="absolute bottom-0 left-0 right-0 h-[2px] rounded-full transition-all duration-300"
                     style={{ backgroundColor: currentVariant.themeColor }}
                   />
                 )}
@@ -143,19 +143,19 @@ export function Navbar({
         </nav>
 
         {/* Action Controls: Theme Toggle, Customizer, Bag */}
-        <div className="flex items-center gap-2.5 sm:gap-3">
+        <div className="flex items-center gap-1.5 sm:gap-2.5">
           {/* Live Customizer Button */}
           <button
             id="open-customizer-btn"
             onClick={onOpenCustomizer}
             title="Customize drink, colors & WebP sequences"
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase transition-all duration-200 border ${
+            className={`min-h-[44px] min-w-[44px] flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase transition-all duration-200 border ${
               isDark
                 ? 'bg-neutral-900/90 hover:bg-neutral-800 text-neutral-200 border-neutral-700 hover:border-neutral-500'
                 : 'bg-neutral-100 hover:bg-neutral-200 text-neutral-800 border-neutral-300 hover:border-neutral-400'
             }`}
           >
-            <Sliders className="w-3.5 h-3.5" style={{ color: currentVariant.themeColor }} />
+            <Sliders className="w-3.5 h-3.5 shrink-0" style={{ color: currentVariant.themeColor }} />
             <span className="hidden md:inline">Customize</span>
           </button>
 
@@ -164,7 +164,7 @@ export function Navbar({
             id="theme-mode-toggle-btn"
             onClick={onToggleTheme}
             aria-label="Toggle dark and light mode"
-            className={`p-2 rounded-full transition-colors border ${
+            className={`min-h-[44px] min-w-[44px] flex items-center justify-center p-2 rounded-full transition-colors border ${
               isDark
                 ? 'bg-neutral-900/80 hover:bg-neutral-800 text-neutral-300 border-neutral-800'
                 : 'bg-neutral-100 hover:bg-neutral-200 text-neutral-700 border-neutral-300'
@@ -178,12 +178,12 @@ export function Navbar({
             id="header-cart-btn"
             onClick={onOpenCart}
             aria-label="View Shopping Cart"
-            className="relative p-2 rounded-full transition-colors bg-white text-neutral-950 hover:bg-neutral-200"
+            className="min-h-[44px] min-w-[44px] relative flex items-center justify-center p-2 rounded-full transition-colors bg-white text-neutral-950 hover:bg-neutral-200"
           >
             <ShoppingBag className="w-4 h-4" />
             {cartCount > 0 && (
               <span
-                className="absolute -top-1 -right-1 w-4 h-4 rounded-full text-[10px] font-bold flex items-center justify-center text-white"
+                className="absolute top-1 right-1 w-4 h-4 rounded-full text-[10px] font-bold flex items-center justify-center text-white"
                 style={{ backgroundColor: currentVariant.themeColor }}
               >
                 {cartCount}
@@ -195,7 +195,7 @@ export function Navbar({
           <button
             id="mobile-nav-toggle"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className={`lg:hidden p-2 rounded-full border ${
+            className={`lg:hidden min-h-[44px] min-w-[44px] flex items-center justify-center p-2 rounded-full border ${
               isDark
                 ? 'bg-neutral-900 text-white border-neutral-800'
                 : 'bg-neutral-100 text-neutral-900 border-neutral-300'
@@ -210,21 +210,34 @@ export function Navbar({
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
         <div
-          className={`lg:hidden border-b px-6 py-6 transition-all ${
+          className={`lg:hidden border-b px-5 py-6 transition-all shadow-2xl ${
             isDark ? 'bg-neutral-950/95 border-neutral-800 text-white' : 'bg-white/95 border-neutral-200 text-neutral-900'
           }`}
         >
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-1">
             {NAV_LINKS.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
                 onClick={(e) => scrollToSection(e, link.href)}
-                className="text-lg font-medium py-1 text-neutral-300 hover:text-white"
+                className="min-h-[44px] flex items-center text-base font-semibold px-3 rounded-xl text-neutral-300 hover:text-white hover:bg-white/5 active:scale-98 transition-colors"
               >
                 {link.label}
               </a>
             ))}
+
+            <div className="mt-4 pt-4 border-t border-neutral-800 flex items-center justify-between">
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  onOpenCustomizer();
+                }}
+                className="min-h-[44px] flex-1 flex items-center justify-center gap-2 py-2 px-4 rounded-xl bg-neutral-900 border border-neutral-700 text-xs font-bold uppercase tracking-wider text-white"
+              >
+                <Sliders className="w-3.5 h-3.5" style={{ color: currentVariant.themeColor }} />
+                <span>Customize Flavors</span>
+              </button>
+            </div>
           </div>
         </div>
       )}

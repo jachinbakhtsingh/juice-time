@@ -18,7 +18,7 @@ export function ProductSection({
   return (
     <section
       id="product"
-      className={`py-28 px-6 sm:px-8 lg:px-12 border-t transition-colors duration-300 ${
+      className={`py-16 sm:py-24 lg:py-28 px-4 sm:px-8 lg:px-12 border-t transition-colors duration-300 ${
         isDark
           ? 'bg-neutral-950 text-white border-neutral-800/80'
           : 'bg-neutral-50 text-neutral-900 border-neutral-200'
@@ -26,7 +26,7 @@ export function ProductSection({
     >
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 gap-6">
           <div>
             <div className="flex items-center gap-2 mb-3">
               <span
@@ -38,7 +38,7 @@ export function ProductSection({
               </span>
             </div>
             <h2
-              className="text-4xl sm:text-5xl lg:text-6xl font-black uppercase tracking-tight font-['Syne']"
+              className="text-3xl sm:text-5xl lg:text-6xl font-black uppercase tracking-tight font-['Syne']"
               style={{ letterSpacing: '-0.03em' }}
             >
               Real Soda. Real Joy.
@@ -51,16 +51,16 @@ export function ProductSection({
         </div>
 
         {/* Feature Highlights Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6 mb-12 sm:mb-20">
           <div
-            className={`p-8 rounded-2xl border transition-all duration-300 ${
+            className={`p-5 sm:p-7 rounded-2xl border transition-all duration-300 ${
               isDark
                 ? 'bg-neutral-900/60 border-neutral-800 hover:border-neutral-700'
                 : 'bg-white border-neutral-200 hover:border-neutral-300 shadow-sm'
             }`}
           >
             <div
-              className="w-12 h-12 rounded-xl flex items-center justify-center mb-6"
+              className="w-12 h-12 rounded-xl flex items-center justify-center mb-5 sm:mb-6"
               style={{
                 backgroundColor: `${currentVariant.themeColor}1a`,
                 color: currentVariant.themeColor,
@@ -68,21 +68,21 @@ export function ProductSection({
             >
               <HeartPulse className="w-6 h-6" />
             </div>
-            <h3 className="text-xl font-bold mb-2">Microbiome Nourishment</h3>
-            <p className="text-sm text-neutral-400 leading-relaxed">
+            <h3 className="text-lg sm:text-xl font-bold mb-2">Microbiome Nourishment</h3>
+            <p className="text-xs sm:text-sm text-neutral-400 leading-relaxed">
               Every single can delivers 9g of soluble prebiotic plant fiber from chicory, cassava, and calendula to cultivate healthy gut flora.
             </p>
           </div>
 
           <div
-            className={`p-8 rounded-2xl border transition-all duration-300 ${
+            className={`p-5 sm:p-7 rounded-2xl border transition-all duration-300 ${
               isDark
                 ? 'bg-neutral-900/60 border-neutral-800 hover:border-neutral-700'
                 : 'bg-white border-neutral-200 hover:border-neutral-300 shadow-sm'
             }`}
           >
             <div
-              className="w-12 h-12 rounded-xl flex items-center justify-center mb-6"
+              className="w-12 h-12 rounded-xl flex items-center justify-center mb-5 sm:mb-6"
               style={{
                 backgroundColor: `${currentVariant.themeColor}1a`,
                 color: currentVariant.themeColor,
@@ -90,21 +90,21 @@ export function ProductSection({
             >
               <Sparkles className="w-6 h-6" />
             </div>
-            <h3 className="text-xl font-bold mb-2">Only 2-5g Natural Sugar</h3>
-            <p className="text-sm text-neutral-400 leading-relaxed">
+            <h3 className="text-lg sm:text-xl font-bold mb-2">Only 2-5g Natural Sugar</h3>
+            <p className="text-xs sm:text-sm text-neutral-400 leading-relaxed">
               Real fruit juices and organic stevia leaf extract deliver classic fountain taste without corn syrup, spike-and-crash sugar spikes, or artificial colors.
             </p>
           </div>
 
           <div
-            className={`p-8 rounded-2xl border transition-all duration-300 ${
+            className={`p-5 sm:p-7 rounded-2xl border transition-all duration-300 ${
               isDark
                 ? 'bg-neutral-900/60 border-neutral-800 hover:border-neutral-700'
                 : 'bg-white border-neutral-200 hover:border-neutral-300 shadow-sm'
             }`}
           >
             <div
-              className="w-12 h-12 rounded-xl flex items-center justify-center mb-6"
+              className="w-12 h-12 rounded-xl flex items-center justify-center mb-5 sm:mb-6"
               style={{
                 backgroundColor: `${currentVariant.themeColor}1a`,
                 color: currentVariant.themeColor,
@@ -112,8 +112,8 @@ export function ProductSection({
             >
               <ShieldCheck className="w-6 h-6" />
             </div>
-            <h3 className="text-xl font-bold mb-2">Clean Certified</h3>
-            <p className="text-sm text-neutral-400 leading-relaxed">
+            <h3 className="text-lg sm:text-xl font-bold mb-2">Clean Certified</h3>
+            <p className="text-xs sm:text-sm text-neutral-400 leading-relaxed">
               Non-GMO Project Verified, Gluten-Free, Vegan, Paleo-friendly, and meticulously lab-tested for purity and prebiotic density.
             </p>
           </div>
@@ -121,32 +121,32 @@ export function ProductSection({
 
         {/* Flavor Selector Matrix */}
         <div
-          className={`p-8 sm:p-12 rounded-3xl border ${
+          className={`p-5 sm:p-8 lg:p-12 rounded-2xl sm:rounded-3xl border ${
             isDark ? 'bg-neutral-900/40 border-neutral-800' : 'bg-white border-neutral-200 shadow-sm'
           }`}
         >
-          <div className="flex items-center justify-between flex-wrap gap-4 mb-8">
+          <div className="flex items-center justify-between flex-wrap gap-3 mb-6 sm:mb-8">
             <div>
               <span className="text-xs uppercase tracking-[0.2em] text-neutral-400 font-semibold block mb-1">
                 Flavor Profiles
               </span>
-              <h3 className="text-2xl sm:text-3xl font-bold font-['Syne']">
+              <h3 className="text-xl sm:text-3xl font-bold font-['Syne']">
                 Explore the Functional Lineup
               </h3>
             </div>
-            <span className="text-xs font-mono text-neutral-500 uppercase">
-              Click to preview flavor in hero
+            <span className="text-[11px] sm:text-xs font-mono text-neutral-500 uppercase">
+              Click to preview in hero
             </span>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5">
             {allVariants.map((variant, idx) => {
               const isSelected = variant.id === currentVariant.id;
               return (
                 <button
                   key={variant.id}
                   onClick={() => onSelectVariant(idx)}
-                  className={`text-left p-6 rounded-2xl border transition-all duration-300 relative group ${
+                  className={`text-left p-4 sm:p-6 rounded-xl sm:rounded-2xl border transition-all duration-300 relative group ${
                     isSelected
                       ? isDark
                         ? 'bg-neutral-800/90 border-white/40 shadow-xl'
@@ -156,7 +156,7 @@ export function ProductSection({
                       : 'bg-neutral-50 border-neutral-200 hover:border-neutral-300'
                   }`}
                 >
-                  <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-center justify-between mb-3 sm:mb-4">
                     <span
                       className="w-3.5 h-3.5 rounded-full"
                       style={{ backgroundColor: variant.themeColor }}
@@ -166,10 +166,10 @@ export function ProductSection({
                     </span>
                   </div>
 
-                  <h4 className="text-2xl font-black uppercase font-['Syne'] tracking-tight mb-1 text-white group-hover:text-white">
+                  <h4 className="text-xl sm:text-2xl font-black uppercase font-['Syne'] tracking-tight mb-1 text-white group-hover:text-white">
                     {variant.name}
                   </h4>
-                  <p className="text-xs font-medium uppercase tracking-wider text-neutral-400 mb-4">
+                  <p className="text-xs font-medium uppercase tracking-wider text-neutral-400 mb-3 sm:mb-4">
                     {variant.subtitle}
                   </p>
 
