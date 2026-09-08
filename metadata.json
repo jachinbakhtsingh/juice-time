@@ -1,0 +1,6 @@
+{
+  "name": "Olipop - Functional Soda",
+  "description": "A modern functional soda brand inspired by classic flavors but made with better ingredients, featuring scroll-driven WebP parallax animation.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
